@@ -34,6 +34,8 @@ var fsb = {
         throw new Error('Input must be an string, Buffer or Uint8Array');
     }
   },
+  
+  version:function(){ return 2; },
 
   /**
    * Checks if Grøstl support is ready (WASM Module loaded)

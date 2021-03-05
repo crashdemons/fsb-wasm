@@ -56,6 +56,8 @@ var fsb = {
     }
   },
 
+  version:function(){ return 2; },
+  
   /**
    * Checks if Grøstl support is ready (WASM Module loaded)
    * @return {Boolean}
