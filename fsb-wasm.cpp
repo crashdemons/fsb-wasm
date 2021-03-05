@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "fsb.h"
 
+extern "C"{
 EMSCRIPTEN_KEEPALIVE
 hashState* fsb_init(int digest_size) {
   hashState* state = (hashState*) malloc(sizeof(hashState));
@@ -37,3 +38,4 @@ void fsb_cleanup(hashState* state) {
   free(state);
 }
 
+}
