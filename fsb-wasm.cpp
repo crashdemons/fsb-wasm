@@ -4,7 +4,7 @@
 
 EMSCRIPTEN_KEEPALIVE
 hashState* fsb_init(int digest_size) {
-  hashState* state = malloc(sizeof(hashState));
+  hashState* state = (hashState*) malloc(sizeof(hashState));
   if (state == NULL)
     return NULL;
 

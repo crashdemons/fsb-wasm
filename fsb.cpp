@@ -204,15 +204,15 @@ HashReturn Hash(int hashbitlen, const BitSequence *data, DataLength databitlen, 
   int return_value;
   return_value = Init(state, hashbitlen);
   if (return_value != SUCCESS) {
-    return return_value;
+    return (HashReturn) return_value;
   }
   return_value = Update(state, data, databitlen);
   if (return_value != SUCCESS) {
-    return return_value;
+    return (HashReturn) return_value;
   }
   return_value = Final(state, hashval);
   free(state);
-  return return_value;  
+  return (HashReturn) return_value;  
 }
 
 void performHash(hashState * state) {
