@@ -2,7 +2,7 @@
 #ifndef PORTABLE_C__
 #define PORTABLE_C__
 
-#include <limits.h>
+#include <climits>
 
 /* Definition of minimum-width integer types
  * 

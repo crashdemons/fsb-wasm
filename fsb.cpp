@@ -1,6 +1,6 @@
-#include <malloc.h>
-#include <stdlib.h>
-#include <string.h>
+//#include <malloc.h>
+#include <cstdlib>
+#include <cstring>
 
 #include "pi.h"
 #include "fsb.h"
@@ -8,7 +8,7 @@
 
 /* parameters of FSB, hardcoded for each output length */
 #define NUMBER_OF_PARAMETERS 6
-const int parameters[NUMBER_OF_PARAMETERS][5] = {
+constexpr int parameters[NUMBER_OF_PARAMETERS][5] = {
   /*
    * parameters of FSB in order:
    * {hashbitlen, n, w, r, p}
@@ -78,7 +78,7 @@ HashReturn Init(hashState * state, int hashbitlen) {
   return BAD_HASHBITLEN;
 }
 
-HashReturn Update(hashState * state, const BitSequence *data, DataLength databitlen) {
+inline HashReturn Update(hashState * state, const BitSequence *data, DataLength databitlen) {
   int tmp,i;
   unsigned char remaining;
   if (databitlen == 0) {
@@ -215,7 +215,7 @@ HashReturn Hash(int hashbitlen, const BitSequence *data, DataLength databitlen, 
   return (HashReturn) return_value;  
 }
 
-void performHash(hashState * state) {
+inline void performHash(hashState * state) {
   int i,j,index,bidx,tmp;
   unsigned int * temp;
   for (i=0; i<LUI(state->r); i++) {
@@ -272,7 +272,7 @@ void performHash(hashState * state) {
   state->count = 0;
 }
 
-unsigned int logarithm(unsigned int a) {
+inline unsigned int logarithm(unsigned int a) {
   int i;
   for (i=0; i<32; i++) {
     if (a == (1<<i)) {

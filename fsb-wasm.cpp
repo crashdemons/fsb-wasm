@@ -1,5 +1,5 @@
 #include <emscripten/emscripten.h>
-#include <stdlib.h>
+#include <cstdlib>
 #include "fsb.h"
 
 extern "C"{

@@ -56,10 +56,10 @@
  *
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
 
 #include "nessie.h"
 
@@ -77,7 +77,7 @@
  * employed).
  */
 
-static const u64 C0[256] = {
+static constexpr u64 C0[256] = {
     LL(0x18186018c07830d8), LL(0x23238c2305af4626), LL(0xc6c63fc67ef991b8), LL(0xe8e887e8136fcdfb),
     LL(0x878726874ca113cb), LL(0xb8b8dab8a9626d11), LL(0x0101040108050209), LL(0x4f4f214f426e9e0d),
     LL(0x3636d836adee6c9b), LL(0xa6a6a2a6590451ff), LL(0xd2d26fd2debdb90c), LL(0xf5f5f3f5fb06f70e),
@@ -144,7 +144,7 @@ static const u64 C0[256] = {
     LL(0x2828a0285d885075), LL(0x5c5c6d5cda31b886), LL(0xf8f8c7f8933fed6b), LL(0x8686228644a411c2),
 };
 
-static const u64 C1[256] = {
+static constexpr u64 C1[256] = {
     LL(0xd818186018c07830), LL(0x2623238c2305af46), LL(0xb8c6c63fc67ef991), LL(0xfbe8e887e8136fcd),
     LL(0xcb878726874ca113), LL(0x11b8b8dab8a9626d), LL(0x0901010401080502), LL(0x0d4f4f214f426e9e),
     LL(0x9b3636d836adee6c), LL(0xffa6a6a2a6590451), LL(0x0cd2d26fd2debdb9), LL(0x0ef5f5f3f5fb06f7),
@@ -211,7 +211,7 @@ static const u64 C1[256] = {
     LL(0x752828a0285d8850), LL(0x865c5c6d5cda31b8), LL(0x6bf8f8c7f8933fed), LL(0xc28686228644a411),
 };
 
-static const u64 C2[256] = {
+static constexpr u64 C2[256] = {
     LL(0x30d818186018c078), LL(0x462623238c2305af), LL(0x91b8c6c63fc67ef9), LL(0xcdfbe8e887e8136f),
     LL(0x13cb878726874ca1), LL(0x6d11b8b8dab8a962), LL(0x0209010104010805), LL(0x9e0d4f4f214f426e),
     LL(0x6c9b3636d836adee), LL(0x51ffa6a6a2a65904), LL(0xb90cd2d26fd2debd), LL(0xf70ef5f5f3f5fb06),
@@ -278,7 +278,7 @@ static const u64 C2[256] = {
     LL(0x50752828a0285d88), LL(0xb8865c5c6d5cda31), LL(0xed6bf8f8c7f8933f), LL(0x11c28686228644a4),
 };
 
-static const u64 C3[256] = {
+static constexpr u64 C3[256] = {
     LL(0x7830d818186018c0), LL(0xaf462623238c2305), LL(0xf991b8c6c63fc67e), LL(0x6fcdfbe8e887e813),
     LL(0xa113cb878726874c), LL(0x626d11b8b8dab8a9), LL(0x0502090101040108), LL(0x6e9e0d4f4f214f42),
     LL(0xee6c9b3636d836ad), LL(0x0451ffa6a6a2a659), LL(0xbdb90cd2d26fd2de), LL(0x06f70ef5f5f3f5fb),
@@ -345,7 +345,7 @@ static const u64 C3[256] = {
     LL(0x8850752828a0285d), LL(0x31b8865c5c6d5cda), LL(0x3fed6bf8f8c7f893), LL(0xa411c28686228644),
 };
 
-static const u64 C4[256] = {
+static constexpr u64 C4[256] = {
     LL(0xc07830d818186018), LL(0x05af462623238c23), LL(0x7ef991b8c6c63fc6), LL(0x136fcdfbe8e887e8),
     LL(0x4ca113cb87872687), LL(0xa9626d11b8b8dab8), LL(0x0805020901010401), LL(0x426e9e0d4f4f214f),
     LL(0xadee6c9b3636d836), LL(0x590451ffa6a6a2a6), LL(0xdebdb90cd2d26fd2), LL(0xfb06f70ef5f5f3f5),
@@ -412,7 +412,7 @@ static const u64 C4[256] = {
     LL(0x5d8850752828a028), LL(0xda31b8865c5c6d5c), LL(0x933fed6bf8f8c7f8), LL(0x44a411c286862286),
 };
 
-static const u64 C5[256] = {
+static constexpr u64 C5[256] = {
     LL(0x18c07830d8181860), LL(0x2305af462623238c), LL(0xc67ef991b8c6c63f), LL(0xe8136fcdfbe8e887),
     LL(0x874ca113cb878726), LL(0xb8a9626d11b8b8da), LL(0x0108050209010104), LL(0x4f426e9e0d4f4f21),
     LL(0x36adee6c9b3636d8), LL(0xa6590451ffa6a6a2), LL(0xd2debdb90cd2d26f), LL(0xf5fb06f70ef5f5f3),
@@ -479,7 +479,7 @@ static const u64 C5[256] = {
     LL(0x285d8850752828a0), LL(0x5cda31b8865c5c6d), LL(0xf8933fed6bf8f8c7), LL(0x8644a411c2868622),
 };
 
-static const u64 C6[256] = {
+static constexpr u64 C6[256] = {
     LL(0x6018c07830d81818), LL(0x8c2305af46262323), LL(0x3fc67ef991b8c6c6), LL(0x87e8136fcdfbe8e8),
     LL(0x26874ca113cb8787), LL(0xdab8a9626d11b8b8), LL(0x0401080502090101), LL(0x214f426e9e0d4f4f),
     LL(0xd836adee6c9b3636), LL(0xa2a6590451ffa6a6), LL(0x6fd2debdb90cd2d2), LL(0xf3f5fb06f70ef5f5),
@@ -546,7 +546,7 @@ static const u64 C6[256] = {
     LL(0xa0285d8850752828), LL(0x6d5cda31b8865c5c), LL(0xc7f8933fed6bf8f8), LL(0x228644a411c28686),
 };
 
-static const u64 C7[256] = {
+static constexpr u64 C7[256] = {
     LL(0x186018c07830d818), LL(0x238c2305af462623), LL(0xc63fc67ef991b8c6), LL(0xe887e8136fcdfbe8),
     LL(0x8726874ca113cb87), LL(0xb8dab8a9626d11b8), LL(0x0104010805020901), LL(0x4f214f426e9e0d4f),
     LL(0x36d836adee6c9b36), LL(0xa6a2a6590451ffa6), LL(0xd26fd2debdb90cd2), LL(0xf5f3f5fb06f70ef5),
@@ -614,7 +614,7 @@ static const u64 C7[256] = {
 };
 
 #ifdef OBSOLETE
-static const u64 C0[256] = {
+static constexpr u64 C0[256] = {
     LL(0x1818281878c0d878), LL(0x23236523af0526af), LL(0xc6c657c6f97eb8f9), LL(0xe8e825e86f13fb6f),
     LL(0x87879487a14ccba1), LL(0xb8b8d5b862a91162), LL(0x0101030105080905), LL(0x4f4fd14f6e420d6e),
     LL(0x36365a36eead9bee), LL(0xa6a6f7a60459ff04), LL(0xd2d26bd2bdde0cbd), LL(0xf5f502f506fb0e06),
@@ -681,7 +681,7 @@ static const u64 C0[256] = {
     LL(0x28287828885d7588), LL(0x5c5ce45c31da8631), LL(0xf8f815f83f936b3f), LL(0x86869786a444c2a4),
 };
 
-static const u64 C1[256] = {
+static constexpr u64 C1[256] = {
     LL(0x781818281878c0d8), LL(0xaf23236523af0526), LL(0xf9c6c657c6f97eb8), LL(0x6fe8e825e86f13fb),
     LL(0xa187879487a14ccb), LL(0x62b8b8d5b862a911), LL(0x0501010301050809), LL(0x6e4f4fd14f6e420d),
     LL(0xee36365a36eead9b), LL(0x04a6a6f7a60459ff), LL(0xbdd2d26bd2bdde0c), LL(0x06f5f502f506fb0e),
@@ -748,7 +748,7 @@ static const u64 C1[256] = {
     LL(0x8828287828885d75), LL(0x315c5ce45c31da86), LL(0x3ff8f815f83f936b), LL(0xa486869786a444c2),
 };
 
-static const u64 C2[256] = {
+static constexpr u64 C2[256] = {
     LL(0xd8781818281878c0), LL(0x26af23236523af05), LL(0xb8f9c6c657c6f97e), LL(0xfb6fe8e825e86f13),
     LL(0xcba187879487a14c), LL(0x1162b8b8d5b862a9), LL(0x0905010103010508), LL(0x0d6e4f4fd14f6e42),
     LL(0x9bee36365a36eead), LL(0xff04a6a6f7a60459), LL(0x0cbdd2d26bd2bdde), LL(0x0e06f5f502f506fb),
@@ -815,7 +815,7 @@ static const u64 C2[256] = {
     LL(0x758828287828885d), LL(0x86315c5ce45c31da), LL(0x6b3ff8f815f83f93), LL(0xc2a486869786a444),
 };
 
-static const u64 C3[256] = {
+static constexpr u64 C3[256] = {
     LL(0xc0d8781818281878), LL(0x0526af23236523af), LL(0x7eb8f9c6c657c6f9), LL(0x13fb6fe8e825e86f),
     LL(0x4ccba187879487a1), LL(0xa91162b8b8d5b862), LL(0x0809050101030105), LL(0x420d6e4f4fd14f6e),
     LL(0xad9bee36365a36ee), LL(0x59ff04a6a6f7a604), LL(0xde0cbdd2d26bd2bd), LL(0xfb0e06f5f502f506),
@@ -882,7 +882,7 @@ static const u64 C3[256] = {
     LL(0x5d75882828782888), LL(0xda86315c5ce45c31), LL(0x936b3ff8f815f83f), LL(0x44c2a486869786a4),
 };
 
-static const u64 C4[256] = {
+static constexpr u64 C4[256] = {
     LL(0x78c0d87818182818), LL(0xaf0526af23236523), LL(0xf97eb8f9c6c657c6), LL(0x6f13fb6fe8e825e8),
     LL(0xa14ccba187879487), LL(0x62a91162b8b8d5b8), LL(0x0508090501010301), LL(0x6e420d6e4f4fd14f),
     LL(0xeead9bee36365a36), LL(0x0459ff04a6a6f7a6), LL(0xbdde0cbdd2d26bd2), LL(0x06fb0e06f5f502f5),
@@ -949,7 +949,7 @@ static const u64 C4[256] = {
     LL(0x885d758828287828), LL(0x31da86315c5ce45c), LL(0x3f936b3ff8f815f8), LL(0xa444c2a486869786),
 };
 
-static const u64 C5[256] = {
+static constexpr u64 C5[256] = {
     LL(0x1878c0d878181828), LL(0x23af0526af232365), LL(0xc6f97eb8f9c6c657), LL(0xe86f13fb6fe8e825),
     LL(0x87a14ccba1878794), LL(0xb862a91162b8b8d5), LL(0x0105080905010103), LL(0x4f6e420d6e4f4fd1),
     LL(0x36eead9bee36365a), LL(0xa60459ff04a6a6f7), LL(0xd2bdde0cbdd2d26b), LL(0xf506fb0e06f5f502),
@@ -1016,7 +1016,7 @@ static const u64 C5[256] = {
     LL(0x28885d7588282878), LL(0x5c31da86315c5ce4), LL(0xf83f936b3ff8f815), LL(0x86a444c2a4868697),
 };
 
-static const u64 C6[256] = {
+static constexpr u64 C6[256] = {
     LL(0x281878c0d8781818), LL(0x6523af0526af2323), LL(0x57c6f97eb8f9c6c6), LL(0x25e86f13fb6fe8e8),
     LL(0x9487a14ccba18787), LL(0xd5b862a91162b8b8), LL(0x0301050809050101), LL(0xd14f6e420d6e4f4f),
     LL(0x5a36eead9bee3636), LL(0xf7a60459ff04a6a6), LL(0x6bd2bdde0cbdd2d2), LL(0x02f506fb0e06f5f5),
@@ -1083,7 +1083,7 @@ static const u64 C6[256] = {
     LL(0x7828885d75882828), LL(0xe45c31da86315c5c), LL(0x15f83f936b3ff8f8), LL(0x9786a444c2a48686),
 };
 
-static const u64 C7[256] = {
+static constexpr u64 C7[256] = {
     LL(0x18281878c0d87818), LL(0x236523af0526af23), LL(0xc657c6f97eb8f9c6), LL(0xe825e86f13fb6fe8),
     LL(0x879487a14ccba187), LL(0xb8d5b862a91162b8), LL(0x0103010508090501), LL(0x4fd14f6e420d6e4f),
     LL(0x365a36eead9bee36), LL(0xa6f7a60459ff04a6), LL(0xd26bd2bdde0cbdd2), LL(0xf502f506fb0e06f5),
@@ -1151,7 +1151,7 @@ static const u64 C7[256] = {
 };
 #endif /* OBSOLETE */
 
-static const u64 rc[R + 1] = {
+static constexpr u64 rc[R + 1] = {
     LL(0x0000000000000000),
     LL(0x1823c6e887b8014f),
     LL(0x36a6d2f5796f9152),
@@ -1168,7 +1168,7 @@ static const u64 rc[R + 1] = {
 /**
  * The core Whirlpool transform.
  */
-static void processBuffer(struct NESSIEstruct * const structpointer) {
+static inline void processBuffer(struct NESSIEstruct * const structpointer) {
     int i, r;
     u64 K[8];        /* the round key */
     u64 block[8];    /* mu(buffer) */
@@ -1513,7 +1513,7 @@ void NESSIEinit(struct NESSIEstruct * const structpointer) {
  *
  * This method maintains the invariant: bufferBits < DIGESTBITS
  */
-void NESSIEadd(const unsigned char * const source,
+inline void NESSIEadd(const unsigned char * const source,
                unsigned long sourceBits,
                struct NESSIEstruct * const structpointer) {
     /*
